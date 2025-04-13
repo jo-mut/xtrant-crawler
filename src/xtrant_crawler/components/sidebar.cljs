@@ -3,19 +3,20 @@
    ["lucide-react" :refer [HomeIcon]]
    ["react-router-dom" :refer [Link]]
    [re-frame.core :as rf]
+   [xtrant-crawler.components.shadcn.button :as button]
    [xtrant-crawler.components.logo :as logo]))
 
 (def sidebar-routes
-  [{:href  ""
+  [{:href  "/"
     :label "Home"
     :icon  HomeIcon}
-   {:href  "workflows"
+   {:href  "/workflows"
     :label "Workflows"
     :icon  HomeIcon}
-   {:href  "credentials"
+   {:href  "/credentials"
     :label "Credentials"
     :icon  HomeIcon}
-   {:href  "billing"
+   {:href  "/billing"
     :label "Billing"
     :icon  HomeIcon}])
 
@@ -26,10 +27,11 @@
    [:div {:className "flex items-center justify-center gap-2 border-b-[1px border-separate p-4]"}
     [logo/view]]
    [:div {:className "flex flex-col p-2"}
-    (map (fn [item]
+    (map (fn [item] 
            [:> Link
-            {:key (:href item)
-             :to (str "/" (:href item))}
-            [:span (:label item)]
-            [:> (:icon item) {:size 20}]])
+            {:key       (:href item)
+             :to        (:href item)
+             :className (button/button-variants)}
+            [:> HomeIcon]
+            (:label item)])
          sidebar-routes)]])

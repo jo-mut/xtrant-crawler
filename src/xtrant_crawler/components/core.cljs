@@ -1,6 +1,5 @@
 (ns xtrant-crawler.components.core
   (:require 
-   ["./core" :refer [Button buttonVariants]]))
+   [xtrant-crawler.components.shadcn.button :as button]))
 
-(def button Button)
-(def button-variants buttonVariants)
+(def button button/view)

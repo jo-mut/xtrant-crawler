@@ -11,7 +11,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/xtrant_crawler/components/shadcn/ui/dialog"
+} from "@/xtrant_crawler/components/shadcn/dialog"
 
 function Command({
   className,

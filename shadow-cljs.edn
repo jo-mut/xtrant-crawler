@@ -8,6 +8,7 @@
  :builds
  {:app
   {:target     :browser
-   :output-dir "public/js" 
-   :asset-path "/js"         
-   :modules    {:main {:init-fn xtrant-crawler.core/init}}}}}
+   :output-dir "public/js"
+   :asset-path "/js"
+   :modules    {:main {:init-fn xtrant-crawler.core/init}}
+   :js-options {:resolve {:target "src/components"}}}}}
