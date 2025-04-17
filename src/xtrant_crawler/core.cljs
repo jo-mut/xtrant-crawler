@@ -2,7 +2,6 @@
   (:require
    ["react-router-dom" :refer [BrowserRouter]]
    [reagent.dom :as rdom]
-   [reagent.core :as r]
    [xtrant-crawler.components.header :as header]
    [xtrant-crawler.components.sidebar :as sidebar]
    [xtrant-crawler.components.breadcrumb-header :as breadcrumb-header]
