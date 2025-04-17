@@ -5,10 +5,12 @@
  [[reagent "1.2.0"]
   [re-frame "1.4.3"]]
 
+ :npm-module-paths ["dist/components"]
+
  :builds
  {:app
   {:target     :browser
    :output-dir "public/js"
    :asset-path "/js"
-   :modules    {:main {:init-fn xtrant-crawler.core/init}}
-   :js-options {:resolve {:target "src/components"}}}}}
+   :modules    {:main {:init-fn xtrant-crawler.core/init}}}}
+ :js-options {:resolve {:modules ["dist/components"]}}}

@@ -1,9 +1,12 @@
 (ns xtrant-crawler.core
   (:require
    ["react-router-dom" :refer [BrowserRouter]]
-   [reagent.dom :as rdom] 
+   [reagent.dom :as rdom]
+   [reagent.core :as r]
    [xtrant-crawler.components.header :as header]
    [xtrant-crawler.components.sidebar :as sidebar]
+   [xtrant-crawler.components.breadcrumb-header :as breadcrumb-header]
+   [xtrant-crawler.components.providers.app-providers :as providers]
    xtrant-crawler.subs
    xtrant-crawler.events))
 
@@ -12,9 +15,18 @@
    [:div {:className "flex h-screen"}
     [sidebar/view]
     [:div {:className "flex flex-col flex-1 min-h-screen"}
+     [breadcrumb-header/view]
      [header/view]
      [:div {:className "overflow-auto"}
       [:div {:className "flex-1 container py-4 text-accent-foreground"}]]]]])
 
+(defn themed-app
+  [children]
+  (js/console.log test)
+  [providers/theme-provider
+   {:default-theme "dark"
+    :storageKey "vite-ui-theme"}
+   [r/as-element children]])
+
 (defn ^:export init []
-  (rdom/render [app] (.getElementById js/document "root")))
+  (rdom/render [themed-app] (.getElementById js/document "root")))
