@@ -4,26 +4,17 @@
    ["react-router-dom" :refer [Link useLocation]]
    [clojure.string :as str]
    [xtrant-crawler.components.core :as ui-core]
-   [xtrant-crawler.components.logo :as logo]))
-
-(def sidebar-routes
-  [{:href  ""
-    :label "Home"
-    :icon  HomeIcon}
-   {:href  "/workflows"
-    :label "Workflows"
-    :icon  HomeIcon}
-   {:href  "/credentials"
-    :label "Credentials"
-    :icon  HomeIcon}
-   {:href  "/billing"
-    :label "Billing"
-    :icon  HomeIcon}])
+   [xtrant-crawler.components.logo :as logo]
+   [xtrant-crawler.routes :as routes]))
 
 (defn active-route-variant [item pathname]
   (if (and (> (count pathname) 0) (str/includes? (:href item) pathname))
     "sidebarActiveItem"
     "sidebarItem"))
+
+;; (defn mobile-side-bar []
+  ;; [:div {:className "block border-separate bg-background md:hidden"}
+  ;;  [:nav {:className "container flex items-center justify-between px-8"}]])
 
 (defn- f-view []
   (let [location     (useLocation)
@@ -45,7 +36,7 @@
                :className (ui-core/button-variants #js {:variant (active-route-variant item pathname)})}
               [:> HomeIcon]
               (:label item)])
-           sidebar-routes)]]))
+           routes/sidebar-routes)]]))
 
 
 (defn view []

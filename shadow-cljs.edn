@@ -12,5 +12,11 @@
   {:target     :browser
    :output-dir "public/js"
    :asset-path "/js"
-   :modules    {:main {:init-fn xtrant-crawler.core/init}}}}
- :js-options {:resolve {:modules ["dist/components"]}}}
+   :modules    {:main {:init-fn xtrant-crawler.core/init
+                       :entries [shadow.cljs.devtools.client.browser
+                                 xtrant-crawler.core]}}
+   :closure-defines {xtrant-crawler.config/VITE_CLERK_PUBLISHABLE_KEY #shadow/env "VITE_CLERK_PUBLISHABLE_KEY"}
+   :devtools {:loader-mode :script
+              :http-root "public"
+              :http-port 3000}}}}
+:js-options {:resolve {:modules ["dist/components"]}}
